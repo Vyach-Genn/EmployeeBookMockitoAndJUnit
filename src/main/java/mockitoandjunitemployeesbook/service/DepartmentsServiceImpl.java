@@ -11,7 +11,8 @@ import java.util.Map;
 public class DepartmentsServiceImpl implements DepartmentsService {
 
     EmployeesService employees;
-@Autowired
+
+    @Autowired
     public DepartmentsServiceImpl(EmployeesService employees) {
         this.employees = employees;
     }
@@ -28,13 +29,13 @@ public class DepartmentsServiceImpl implements DepartmentsService {
     }
 
     @Override
-    public Integer paidTotalSalaryDeparments(int number) {
+    public Integer paidTotalSalaryDeparment(int number) {
         return employees.paidTotalSalaryDepartments(number);
     }
 
     @Override
     public List<Employee> printListEmployeeDepartment(int number) {
-       return employees.printListEmployeeDepartment(number);
+        return employees.printListEmployeeDepartment(number);
     }
 
     @Override

@@ -10,7 +10,7 @@ public interface DepartmentsService {
 
     Employee findEmployeeDepartmentMaxSalary(int number);
 
-    Integer paidTotalSalaryDeparments(int number);
+    Integer paidTotalSalaryDeparment(int number);
 
     List<Employee> printListEmployeeDepartment(int number);
 

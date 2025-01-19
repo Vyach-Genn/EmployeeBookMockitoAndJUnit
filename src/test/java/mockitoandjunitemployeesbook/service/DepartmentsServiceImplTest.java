@@ -41,6 +41,7 @@ class DepartmentsServiceImplTest {
 
         Employee minSalary = Collections.min(employees, Comparator.comparingInt(Employee::getMonthSalary));
         when(employeesService.findEmployeeDepartmentMinSalary(departmentId)).thenReturn(minSalary);
+
         Employee actual = out.findEmployeeDepartmentMinSalary(departmentId);
 
         assertFalse(employees.isEmpty());
@@ -53,8 +54,10 @@ class DepartmentsServiceImplTest {
     @ParameterizedTest
     @MethodSource("provideParamsForTestEmployeeDepartment")
     void findEmployeeDepartmentMaxSalary_ShouldReturnEmployeeWithMaxSalary(int departmentId, List<Employee> employees) {
+
         Employee maxSalary = Collections.max(employees, Comparator.comparingInt(Employee::getMonthSalary));
         when(employeesService.findEmployeeDepartmentMaxSalary(departmentId)).thenReturn(maxSalary);
+
         Employee actual = out.findEmployeeDepartmentMaxSalary(departmentId);
 
         assertFalse(employees.isEmpty());
@@ -66,11 +69,14 @@ class DepartmentsServiceImplTest {
     @ParameterizedTest
     @MethodSource("provideParamsForTestEmployeeDepartment")
     void paidTotalSalaryDepartments_ShouldReturnCorrectSum(int departmentId, List<Employee> employees) {
+
         int sum = employees.stream()
                 .mapToInt(Employee::getMonthSalary)
                 .sum();
         when(employeesService.paidTotalSalaryDepartments(departmentId)).thenReturn(sum);
-        int actual = out.paidTotalSalaryDeparments(departmentId);
+
+        int actual = out.paidTotalSalaryDeparment(departmentId);
+
         assertEquals(sum, actual);
         verify(employeesService, times(1)).paidTotalSalaryDepartments(departmentId);
     }
@@ -78,8 +84,11 @@ class DepartmentsServiceImplTest {
     @ParameterizedTest
     @MethodSource("provideParamsForTestEmployeeDepartment")
     void printListEmployeeDepartment_ShouldPrintDepartment(int departmentId, List<Employee> employees) {
+
         when(employeesService.printListEmployeeDepartment(departmentId)).thenReturn(employees);
+
         List<Employee> actual = out.printListEmployeeDepartment(departmentId);
+
         assertEquals(employees, actual);
         assertNotNull(actual);
         verify(employeesService, times(1)).printListEmployeeDepartment(departmentId);
@@ -88,9 +97,12 @@ class DepartmentsServiceImplTest {
     @ParameterizedTest
     @MethodSource("provideParamsForTestEmployeeDepartment")
     void divideEmployeesByDepartments_ShouldPrintByDepartment(int departmentId, List<Employee> employees) {
+
         Map<Integer, List<Employee>> expected = Map.of(departmentId, employees);
         when(employeesService.divideEmployeesByDepartments()).thenReturn(expected);
+
         Map<Integer, List<Employee>> actual = out.divideEmployeesByDepartments();
+
         assertEquals(expected, actual);
         assertNotNull(actual);
         verify(employeesService, times(1)).divideEmployeesByDepartments();

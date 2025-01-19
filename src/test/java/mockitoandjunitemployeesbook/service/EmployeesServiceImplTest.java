@@ -19,8 +19,11 @@ class EmployeesServiceImplTest {
     @ParameterizedTest
     @MethodSource("provideParamsForTestListEmployee")
     void printListEmployee_ShouldReturnAllEmployees(List<Employee> employees) {
+
         out = new EmployeesServiceImpl(employees);
+
         List<Employee> result = out.printListEmployee();
+
         assertNotNull(result);
         assertFalse(result.isEmpty());
         assertEquals(3, result.size());
@@ -29,9 +32,12 @@ class EmployeesServiceImplTest {
     @ParameterizedTest
     @MethodSource("provideParamsForTestListEmployee")
     void calculateSumSalary_ShouldReturnCorrectSum(List<Employee> employees) {
+
         out = new EmployeesServiceImpl(employees);
         int expected = 600;
+
         int sum = out.calculateSumSalary();
+
         assertEquals(expected, sum);
 
     }
@@ -39,18 +45,24 @@ class EmployeesServiceImplTest {
     @ParameterizedTest
     @MethodSource("provideParamsForTestListEmployee")
     void findMinSalary_ShouldReturnSalaryMin(List<Employee> employees) {
+
         out = new EmployeesServiceImpl(employees);
         Employee expected = new Employee("Иванов", 1, 100);
+
         Employee min = out.findMinSalary();
+
         assertEquals(expected, min);
     }
 
     @ParameterizedTest
     @MethodSource("provideParamsForTestListEmployee")
     void findMaxSalary_ShouldReturnSalaryMax(List<Employee> employees) {
+
         out = new EmployeesServiceImpl(employees);
         Employee expected = new Employee("Сидоров", 3, 300);
+
         Employee max = out.findMaxSalary();
+
         assertEquals(expected, max);
     }
 

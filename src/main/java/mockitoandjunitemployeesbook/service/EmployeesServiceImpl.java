@@ -25,7 +25,8 @@ public class EmployeesServiceImpl implements EmployeesService {
     public EmployeesServiceImpl(List<Employee> employees) {
         this.employees = employees;
     }
-    public EmployeesServiceImpl(){
+
+    public EmployeesServiceImpl() {
 
     }
 
@@ -55,14 +56,12 @@ public class EmployeesServiceImpl implements EmployeesService {
                 .orElse(null);
     }
 
-
     @Override
     public Employee findEmployeeDepartmentMinSalary(int number) {
         return employees.stream()
                 .filter(employee -> employee.getDepartment() == number)
                 .min(Comparator.comparingInt(Employee::getMonthSalary))
                 .orElse(null);
-
     }
 
     @Override

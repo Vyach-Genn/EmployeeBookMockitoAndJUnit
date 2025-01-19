@@ -16,34 +16,35 @@ import java.util.Map;
 public class DepartmentController {
 
     DepartmentsService departmentsService;
-@Autowired
+
+    @Autowired
     public DepartmentController(DepartmentsService departmentsService) {
         this.departmentsService = departmentsService;
     }
-    @GetMapping("/{id}/salary/min")
 
+    @GetMapping("/{id}/salary/min")
     public Employee findEmployeeDepartmentMinSalary(@PathVariable int id) {
         return departmentsService.findEmployeeDepartmentMinSalary(id);
     }
 
-@GetMapping("/{id}/salary/max")
+    @GetMapping("/{id}/salary/max")
     public Employee findEmployeeDepartmentMaxSalary(@PathVariable int id) {
-return departmentsService.findEmployeeDepartmentMaxSalary(id);
+        return departmentsService.findEmployeeDepartmentMaxSalary(id);
     }
 
-@GetMapping("/{id}/salary/sum")
+    @GetMapping("/{id}/salary/sum")
     public Integer paidTotalSalaryDeparments(@PathVariable int id) {
-    return departmentsService.paidTotalSalaryDeparments(id);
+        return departmentsService.paidTotalSalaryDeparment(id);
     }
 
-@GetMapping("/{id}/employees")
+    @GetMapping("/{id}/employees")
     public List<Employee> printListEmployeeDepartment(@PathVariable int id) {
-return departmentsService.printListEmployeeDepartment(id);
+        return departmentsService.printListEmployeeDepartment(id);
     }
 
-@GetMapping("/employees")
+    @GetMapping("/employees")
     public Map<Integer, List<Employee>> divideEmployeesByDepartments() {
-return departmentsService.divideEmployeesByDepartments();
+        return departmentsService.divideEmployeesByDepartments();
 
     }
 }

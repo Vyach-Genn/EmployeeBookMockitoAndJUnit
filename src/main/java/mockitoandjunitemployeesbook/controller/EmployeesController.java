@@ -41,5 +41,4 @@ public class EmployeesController {
         return employeesService.findMaxSalary();
     }
 
-
 }
